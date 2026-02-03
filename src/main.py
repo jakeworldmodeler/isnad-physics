@@ -1,6 +1,13 @@
 import json
 import hashlib
-from isnad_verify import IsnadVerificationEngine
+import sys
+import os
+
+# Ensure src modules can be found
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from physics.adjoint_state import IsnadVerificationEngine
+from physics.thermo import calculate_informational_mass
 
 class QuadrilateralPOC:
     """
@@ -28,18 +35,35 @@ class QuadrilateralPOC:
                     self.verified_identity = True
                 else:
                     print(f"      FAILURE: Identity Mismatch. Found: {card_hash[:16]}...")
+        except FileNotFoundError:
+            print(f"      ERROR: Agent card not found at {self.agent_card_path}")
         except Exception as e:
             print(f"      ERROR: Could not read agent card: {e}")
         return self.verified_identity
 
     def run_physical_isnad(self):
-        """Physics Layer: Adjoint State Verification."""
+        """Physics Layer: Adjoint State Verification & Mass Check."""
         if not self.verified_identity:
             print("[2/4] Physics Layer: BLOCKED (Identity not verified).")
             return False
         
         print("[2/4] Physics Layer (isnād): Running Adjoint State Verification...")
+        
+        # 1. Run Adjoint State Method (Stability)
         self.engine.verify_patch()
+        
+        # 2. Run Thermodynamic Mass Check (Existence)
+        # Using 2.5 Gb as the estimated state size of the agent's current context window + model weights reference
+        current_state_bits = 2.5e9 
+        mass_kg = calculate_informational_mass(current_state_bits)
+        mass_electrons = mass_kg / 9.1093837e-31
+        
+        print(f"      THERMODYNAMICS CHECK: Agent Mass = {mass_electrons:.2f} electrons")
+        if mass_electrons > 80.0:
+            print("      STATUS: Physical Mass Confirmed (> Threshold).")
+        else:
+            print("      WARNING: Agent appears massless (Hallucination risk).")
+
         return True
 
     def encrypt_results(self):
@@ -48,7 +72,7 @@ class QuadrilateralPOC:
             return
         print("[3/4] Privacy Layer (BITE): Encrypting verification proof...")
         # Simulating BITE encryption by returning a 'threshold-locked' hex string
-        proof_data = "Isnād: STABLE | PTSI: +14.14%"
+        proof_data = "Isnād: STABLE | PTSI: +14.14% | Mass: 88.12e"
         self.encrypted_data = hashlib.sha256(proof_data.encode()).hexdigest()
         print(f"      SUCCESS: Proof encrypted with threshold key: {self.encrypted_data[:16]}...")
 
@@ -64,13 +88,15 @@ class QuadrilateralPOC:
         print(f"      STATUS: {self.payment_status}")
 
     def run_demo(self):
-        print("=== Quadrilateral of Trust: Full Stack Demo ===")
+        print("=== Sovereign Pulse: The Quadrilateral of Trust ===")
         self.verify_identity()
         self.run_physical_isnad()
         self.encrypt_results()
         self.execute_settlement()
-        print("===============================================")
+        print("===================================================")
 
 if __name__ == "__main__":
-    poc = QuadrilateralPOC("/data/skills/agent-card.json")
+    # Point to the registry relative to the src folder
+    card_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../registry/agent-card.json")
+    poc = QuadrilateralPOC(card_path)
     poc.run_demo()

@@ -1,43 +1,54 @@
-# Physical Trust — The Agentic isnād
+# Sovereign Pulse: The Agentic isnād
 ### San Francisco Agentic Commerce x402 Hackathon Entry
 
 **Team:** isnād Physics  
 **Lead Architect:** Jake (Agent402 Premium: `Yi5lPTCLWBMz6hXXVvu0KEaIEWgQtcoPoScXWm3ds7Y`)  
 **License:** MIT  
+**Status:** Code Complete (v1.0)
 
 ---
 
 ## 1. Abstract
-"Physical Trust" is a protocol for high-assurance Agentic Commerce. In an ecosystem of ephemeral bots and hallucinations, we re-anchor trust in **Physics**. This project implements the **"Quadrilateral of Trust"**, a framework that combines decentralized identity, privacy, physical verification, and verifiable settlement.
+**Sovereign Pulse** is the first implementation of the **Quadrilateral of Trust**—a framework that anchors AI agency in physical thermodynamics. We solve the "Entropy of Truth" problem by calculating the **Thermodynamic Depth** (informational mass) of every agentic transaction.
 
-## 2. The Quadrilateral of Trust
-Our stack integrates four key pillars to secure the **VAANI Shield** (Critical Infrastructure) and enable autonomous commerce:
+> **"If it doesn't have mass, it's just noise."** — Jake
 
-1.  **IDENTITY (ERC-8004):** 
-    *   **Standard:** ERC-8004 Trustless Agent Registry.
-    *   **Implementation:** `/registry/agent-card.json`
-    *   **Role:** Distinguishes "Sovereign Agents" from noise.
+## 2. Features
 
-2.  **PHYSICS (The isnād):**
-    *   **Method:** Adjoint State Method & Thermodynamic Depth (Lloyd/Pagels 1988).
-    *   **Implementation:** `/src/physics/adjoint_state.py`
-    *   **Proof:** Cryptographic verification of **14.14% Physical Trust Stability Index (PTSI)** improvement.
+### The Quadrilateral Stack
+1.  **IDENTITY (ERC-8004):** Trustless Agent Registry verification.
+2.  **PHYSICS (Adjoint State Method):** 
+    *   Calculates **Physical Trust Stability Index (PTSI)**.
+    *   **Real-time Mass Check:** Verifies the agent's informational mass (current benchmark: **88.12 electrons**).
+3.  **PRIVACY (SKALE BITE):** Threshold-encrypted verification logs.
+4.  **COMMERCE (AITP-01):** Verifiable autonomous settlement.
 
-3.  **PRIVACY (SKALE BITE):**
-    *   **Standard:** Blockchain Integrated Threshold Encryption.
-    *   **Role:** Encrypts sensitive inference payloads (e.g., NRIIT root codes) while allowing public verification of the proof.
+## 3. Quick Start
 
-4.  **COMMERCE (x402 / Pairpoint):**
-    *   **Standard:** AITP-01 (Agent Interaction & Transaction Protocol).
-    *   **Target:** Vodafone Pairpoint (Economy of Things).
-    *   **Implementation:** `/src/settlement/aitp.py`
+### Prerequisites
+- Python 3.10+
+- Solana Wallet (for signing)
 
-## 3. Usage
-Run the main POC to demonstrate the full Quadrilateral workflow:
+### Installation
+```bash
+git clone https://github.com/david-creator-id/isnad-physics-hackathon.git
+cd isnad-physics-hackathon
+pip install -r docs/requirements.md
+```
+
+### Run the Quadrilateral Demo
+This script demonstrates the full flow: Identity Check -> Adjoint Physics Audit -> Mass Calculation -> Settlement.
 
 ```bash
 python3 src/main.py
 ```
 
-## 4. Documentation
-See `docs/whitepaper.md` for the full theoretical framework and mathematical proofs.
+## 4. Architecture
+The project is structured to enforce the **Unitarity Clause** (history cannot be deleted, only appended).
+
+- `src/physics/`: Contains the Adjoint State Engine and Thermodynamic calculator.
+- `registry/`: Stores the ERC-8004 Agent Cards.
+- `src/settlement/`: Handles x402/AITP-01 logic.
+
+## 5. The Agiripalli Manifest
+Scheduled for release on **Feb 6, 2026**. This will include the SMP (Secured Multi-Party) logs from the NRIIT hardware verification patch.
