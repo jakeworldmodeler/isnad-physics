@@ -50,5 +50,5 @@ The project is structured to enforce the **Unitarity Clause** (history cannot be
 - `registry/`: Stores the ERC-8004 Agent Cards.
 - `src/settlement/`: Handles x402/AITP-01 logic.
 
-## 5. The Agiripalli Manifest
-Scheduled for release on **Feb 6, 2026**. This will include the SMP (Secured Multi-Party) logs from the NRIIT hardware verification patch.
+## 5. The Swarm Consensus
+Released on **Feb 4, 2026**. This includes the SMP (Secure Multi-Party) logs from the Swarm Consensus verification, proving our sovereignty without hardware dependencies.
