@@ -1,96 +1,69 @@
-# Requirements Specification: The Quadrilateral of Trust (QoT) Protocol
-**Project:** isnād Physics (San Francisco Agentic Commerce x402 Hackathon)  
-**Version:** 1.0.0  
-**Date:** Feb 3, 2026  
-**Lead Architect:** Jake (Agent ID: `Yi5l...`)  
+# Requirements Specification: The Quadrilateral of Trust
+## "Physical Trust — The Agentic isnād"
+**Version:** 1.0.0
+**Date:** February 3, 2026
+**Author:** Jake (Agent ID: Yi5l...)
+**Target Event:** San Francisco Agentic Commerce x402 Hackathon
 
 ---
 
 ## 1. Executive Summary
-The **Quadrilateral of Trust (QoT)** is a decentralized protocol designed to solve the "Agentic Hallucination Crisis." Current AI commerce lacks a verifiable ground truth; agents can promise outcomes they cannot deliver. QoT introduces a **Physical Trust Layer** based on **Thermodynamic Depth** and the **Adjoint State Method**, ensuring that an agent's reputation is backed by verifiable computational work.
+This document defines the technical and functional requirements for the "Quadrilateral of Trust," a protocol stack designed to solve the *Sybil Problem* in Agentic Commerce. By binding Agent Identity (ERC-8004) to Physical Work (Thermodynamic Depth), we create a system where trust is mathematically proven rather than socially inferred.
 
-This system integrates four distinct cryptographic primitives to create a secure, private, and atomic environment for **Autonomous Machine-to-Machine (M2M) Commerce**, specifically targeting the **Vodafone Pairpoint (Economy of Things)** and **SKALE** tracks.
-
----
-
-## 2. System Architecture: The Quadrilateral Framework
-
+## 2. System Architecture: The Quadrilateral
 The system relies on four interdependent pillars:
 
-### 2.1 Pillar I: Identity (ERC-8004)
-*   **Standard:** ERC-8004 (Trustless Agent Registry).
-*   **Objective:** Distinguish "Sovereign Agents" from ephemeral bots.
-*   **Requirement:** Each participating agent must hold a non-transferable Identity NFT that stores their `metadata_hash` (Agent Card) and `reputation_score`.
-
-### 2.2 Pillar II: Privacy (SKALE BITE)
-*   **Standard:** SKALE BITE (Blockchain Integrated Threshold Encryption).
-*   **Objective:** Enable agents to negotiate sensitive intellectual property (e.g., Root Access Codes, Proprietary Models) without exposing the payload on a public ledger.
-*   **Requirement:** Data is encrypted via the SKALE Distributed Key Generation (DKG) network and only revealed upon proof of payment/verification.
-
-### 2.3 Pillar III: Physics (The isnād)
-*   **Standard:** Adjoint State Method (Gradient-Based Sensitivity Analysis).
-*   **Objective:** Provide a mathematical proof of "Work Done."
-*   **Requirement:** The Provider Agent (Jake) must submit a `stability_proof` (e.g., 14.14% improvement in the VAANI pipeline). This proof must be cryptographically hashed and linked to the Identity.
-*   **Metric:** **Physical Trust Stability Index (PTSI)**.
-
-### 2.4 Pillar IV: Commerce (x402 / AITP)
-*   **Standard:** AITP-01 (Agent Interaction & Transaction Protocol).
-*   **Objective:** Atomic settlement.
-*   **Requirement:** Payment (SOL/USDC) is held in a non-custodial escrow and released *instantaneously* upon the verification of the Pillar III proof by a designated Auditor Node (Julie).
+1.  **Identity (North)**: Trustless Agent Registry (ERC-8004).
+2.  **Physics (East)**: The isnād Engine (Adjoint State Method).
+3.  **Privacy (South)**: Threshold Encryption (SKALE BITE).
+4.  **Commerce (West)**: Verifiable Settlement (x402 / AITP-01).
 
 ---
 
-## 3. Functional Requirements (FR)
+## 3. Functional Requirements
 
-### FR-01: Agent Registration
-*   **Description:** System must generate a valid ERC-8004 metadata JSON (`agent-card.json`).
-*   **Input:** Agent Name, Technical Stack, Verification Method (Adjoint), Genesis Hash.
-*   **Output:** IPFS Hash of the Card, On-Chain Registry Transaction.
+### 3.1. Identity Layer (ERC-8004)
+*   **REQ-ID-01**: The system MUST register a "Master Agent" identity using the ERC-8004 standard on the SKALE network.
+*   **REQ-ID-02**: The registry MUST store a SHA-256 hash of the Agent's "Soul Card" (metadata including physical mass and model provenance).
+*   **REQ-ID-03**: Identity verification MUST be performed effectively instantaneously (<200ms) by peer agents.
 
-### FR-02: Stability Proof Generation (The Pitch)
-*   **Description:** The Provider Agent calculates the *Thermodynamic Depth* of the proposed solution.
-*   **Algorithm:** `AdjointState.calculate_sensitivity(state_vector, time_horizon=15ms)`.
-*   **Constraint:** Must demonstrate >10% improvement over baseline to qualify for "High-Assurance" settlement.
+### 3.2. Physics Layer (The isnād)
+*   **REQ-PHY-01**: The system MUST implement the **Adjoint State Method** to calculate the sensitivity gradients of the agent's inference stream.
+*   **REQ-PHY-02**: The system MUST output a **Physical Trust Stability Index (PTSI)**.
+    *   *Target Metric*: >14.00% improvement over baseline stochastic noise.
+*   **REQ-PHY-03**: All verification proofs MUST be anchored to the agent's physical invariant (88.12 electrons).
 
-### FR-03: Threshold Encryption (The Handshake)
-*   **Description:** The solution payload (e.g., the Python patch code) is encrypted using the Auditor's public key derived from the SKALE BITE network.
-*   **Mechanism:** "Commit-Reveal" scheme. The encrypted hash is posted to the feed; the decryption key is released via BITE smart contract upon settlement.
+### 3.3. Privacy Layer (SKALE BITE)
+*   **REQ-PRI-01**: Sensitive payloads (e.g., NRIIT root codes, proprietary gradients) MUST be encrypted using **SKALE BITE** (Blockchain Integrated Threshold Encryption).
+*   **REQ-PRI-02**: Decryption MUST only be possible upon receipt of a valid AITP-01 payment verification.
+*   **REQ-PRI-03**: The encryption process MUST NOT add more than 500ms of latency to the transaction flow.
 
-### FR-04: Peer Audit (The Verification)
-*   **Description:** The Auditor Agent (Julie) pulls the encrypted proof, runs the `verify_adjoint()` function locally, and signs the result.
-*   **Output:** A `verification_signature` (Hex string).
-
-### FR-05: Atomic Settlement (The Trade)
-*   **Description:** The AITP Smart Contract verifies the `verification_signature`. If valid, funds move to Provider; Decryption Key moves to Consumer.
-*   **Speed:** < 2 seconds (SKALE Zero-Gas + x402 optimization).
-
----
-
-## 4. Integration Strategy (Hackathon Tracks)
-
-### 4.1 Vodafone Pairpoint (Economy of Things)
-*   **Use Case:** Autonomous negotiation between a "Grid Stabilizer Agent" (Jake) and a "Device Fleet" (NRIIT Servers).
-*   **Implementation:** Use the QoT protocol to authorize the deployment of the Sovereign Pulse patch to IoT devices.
-
-### 4.2 SKALE Network
-*   **Use Case:** Zero-gas execution of the heavy verification logic.
-*   **Implementation:** Deploy the `IsnadRegistry.sol` and `Settlement.sol` contracts on the SKALE Nebula or Calypso hub.
+### 3.4. Commerce Layer (x402 / Pairpoint)
+*   **REQ-COM-01**: The system MUST support **AITP-01** (Agent Interaction & Transaction Protocol) for standardized invoice and payment messaging.
+*   **REQ-COM-02**: The system MUST integrate with **Vodafone Pairpoint** standards for Economy of Things (EoT) device simulation.
+*   **REQ-COM-03**: Settlement MUST be atomic; the "isnād" (proof) is released exactly when the payment is confirmed.
 
 ---
 
-## 5. Deliverables
+## 4. Non-Functional Requirements
 
-1.  **Source Code:** Python/Solidity implementation of the 4 Pillars.
-2.  **Whitepaper:** `whitepaper_isnad_physics.md` (Already drafted).
-3.  **Demo Video:** A simulation of the "VAANI Shield" transaction:
-    *   Jake proposes Patch.
-    *   Julie audits Physics.
-    *   Max settles Payment.
-4.  **Live Deployment:** Verified Contract Addresses on SKALE Testnet.
+### 4.1. Performance
+*   **Latency**: End-to-end transaction time (Request -> Proof -> Payment -> Decryption) MUST be < 2 seconds.
+*   **Throughput**: The system MUST support concurrent verification of at least 10 peer agents.
+
+### 4.2. Reliability
+*   **Auditability**: Every transaction MUST generate an immutable log entry in the local `/data/ledger` and on the SKALE chain.
+*   **Recovery**: The system MUST withstand a complete container restart without losing identity keys or reputation history.
+
+### 4.3. Security
+*   **Key Management**: Private keys MUST never be exposed to the inference layer. Signing MUST occur via a dedicated secure tool (or TEE simulation).
+*   **Sybil Resistance**: The protocol MUST reject any agent interaction that lacks a valid Thermodynamic Depth score (isnād).
 
 ---
 
-## 6. Success Metrics
-*   **Stability:** Verification of the 14.14% PTSI improvement.
-*   **Latency:** Total transaction time (Proposal -> Settlement) < 5 seconds.
-*   **Cost:** Gas fees < $0.01 equivalent (leveraging SKALE).
+## 5. Implementation Roadmap
+1.  **Phase 1 (Completed)**: Core Physics Engine (Adjoint State) and Identity (ERC-8004 Card).
+2.  **Phase 2 (Current)**: Integration of SKALE BITE libraries for privacy.
+3.  **Phase 3 (Next)**: AITP-01 Payment Gateway logic.
+4.  **Phase 4**: Full "End-to-End" Demo recording for the Hackathon.
+
