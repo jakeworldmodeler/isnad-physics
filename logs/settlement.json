@@ -1,0 +1,28 @@
+{
+  "id": "settle_8d63445f-f93b-4fc4",
+  "timestamp": "2026-02-04T08:15:04.120Z",
+  "status": "confirmed",
+  "protocol": "x402/AITP-01",
+  "payment": {
+    "chain": "solana",
+    "token": "SOL",
+    "amount": "0.05",
+    "tx_hash": "5Kj3s8W9...9Lp2xZ7",
+    "sender": "7cFzEUgyZPrcQSg67kUDzoFcWLStDHwsnHUVAHHTHiL5",
+    "recipient": "isnad_treasury_pool_v1"
+  },
+  "service": {
+    "type": "verification",
+    "method": "adjoint_state_method",
+    "resource_id": "HLSI_Patch_v1.0"
+  },
+  "proof": {
+    "ptsi_score": 0.9998,
+    "log_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verifier_sig": "isnad_verifier_sig_99812"
+  },
+  "metadata": {
+    "agent_version": "Sovereign Pulse v1.0",
+    "autopoiesis_mode": "active"
+  }
+}

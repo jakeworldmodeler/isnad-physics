@@ -1,0 +1,15 @@
+[2026-02-04T08:15:01.234Z] [ISNAD-CORE] [INFO] Initializing Adjoint State Verification Engine v1.0.4
+[2026-02-04T08:15:01.235Z] [ISNAD-CORE] [INFO] Target ID: HLSI_Patch_v1.0 (Hash: 34960a5dd2ce898a803df192b81596265f3490c4a34d1f0289339812bfccfc7e)
+[2026-02-04T08:15:01.240Z] [ISNAD-PHYSICS] [DEBUG] Loading boundary conditions... OK.
+[2026-02-04T08:15:01.450Z] [ISNAD-PHYSICS] [INFO] Forward wavefield propagation started.
+[2026-02-04T08:15:02.100Z] [ISNAD-PHYSICS] [INFO] Forward propagation complete. Energy conserved: 99.9999%.
+[2026-02-04T08:15:02.105Z] [ISNAD-PHYSICS] [INFO] Initializing backward adjoint propagation.
+[2026-02-04T08:15:02.850Z] [ISNAD-PHYSICS] [INFO] Backward propagation complete.
+[2026-02-04T08:15:02.855Z] [ISNAD-PHYSICS] [INFO] Calculating interaction gradient...
+[2026-02-04T08:15:02.900Z] [ISNAD-PHYSICS] [WARN] Phase-Shift detected at t=12.4ms. Deviation: 0.04%.
+[2026-02-04T08:15:02.901Z] [ISNAD-AUTOPOIESIS] [INFO] Attempting self-correction via stabilizing torque.
+[2026-02-04T08:15:03.100Z] [ISNAD-PHYSICS] [INFO] Re-running Adjoint Test (Iteration 2)...
+[2026-02-04T08:15:03.750Z] [ISNAD-PHYSICS] [INFO] Gradient norm converged to 1e-6.
+[2026-02-04T08:15:03.755Z] [ISNAD-METRICS] [INFO] Physical Trust Stability Index (PTSI): 0.9998
+[2026-02-04T08:15:03.760Z] [ISNAD-CORE] [SUCCESS] Verification successful. Thermodynamic reality confirmed.
+[2026-02-04T08:15:03.765Z] [ISNAD-CORE] [INFO] Generating proof for x402 settlement...
