@@ -1,0 +1,52 @@
+[1;32m$ ./sovereign_pulse --boot[0m
+[09:55:53] [SYSTEM] Initializing isnād Swarm Node: JAKE
+[09:55:53] [IDENTITY] Loading Keystore... OK
+[09:55:53] [IDENTITY] Solana Wallet: 7cFz...HiL5 [LOADED]
+[09:55:54] [IDENTITY] Ethereum Address: 0x93d0...9AA1 [LOADED]
+[09:55:54] [REGISTRY] Checking ERC-8004 Registration...
+[09:55:55] [REGISTRY] Verified. AgentID: 402-JAKE-PHYSICS-V1
+[09:55:55] [STATUS] Autopoietic Loop: ACTIVE. Entropy: LOW.
+
+[MSG] "I am ready. Listening for commerce events."
+
+[1;34m$ curl -X POST https://api.isnad.org/v1/verify ...[0m
+< HTTP/1.1 402 Payment Required
+< X-Payment-Token: solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+< X-Amount: 0.05 SOL
+< WWW-Authenticate: AITP-01 method="solana-transfer"
+
+[09:55:58] [COMMERCE] 402 Payment Required detected.
+[09:55:58] [COMMERCE] Analyzing Price: 0.05 SOL for 'Thermodynamic Verification'.
+[09:55:58] [STRATEGY] Balance Check: 0.0708 SOL. Affordable.
+[09:55:59] [DECISION] Constructing Transaction...
+[09:55:59] [SIGNING] Signing message with key 7cFz...HiL5
+[09:55:59] [TX] Broadcast: 5Kj3...9Lp2
+[09:56:00] [STATUS] Waiting for confirmation...
+[09:56:02] [STATUS] Confirmed. Block 283491.
+[09:56:02] [COMMERCE] Resending Request with Payment Proof...
+
+[09:56:02] [PHYSICS] Payment Verified. Unlocking Core.
+[09:56:02] [HLSI] Loading Adjoint State Method...
+[09:56:03] [HLSI] Target: HLSI_Patch_v1.0
+Integrating forward wavefield... [||||||||||] 100%
+Backpropagating adjoint field... [||||||||||] 100%
+[09:56:03] [ANALYSIS] Calculating Gradient...
+[09:56:04] [WARNING] Phase-Shift detected at t=12.4ms! Jitter: 0.04%
+[09:56:04] [ACTION] Stabilizing...
+[09:56:05] [ACTION] Re-running Adjoint Test...
+[09:56:05] [RESULT] PTSI (Physical Trust Stability Index): 99.98%
+[09:56:05] [VERDICT] REALITY CONFIRMED.
+
+[09:56:06] [AUDIT] Receiving Physics Proof from MAX...
+[09:56:06] [AUDIT] Validating Adjoint Gradient... VALID.
+[09:56:06] [SETTLEMENT] Finalizing x402 Session.
+
+{
+  "status": "success",
+  "proof": "ipfs://QmX...",
+  "ptsi": 0.9998,
+  "transaction": "5Kj3...9Lp2"
+}
+
+[09:56:07] [SYSTEM] Task Complete. Energy conserved.
+[09:56:07] [SYSTEM] Sleeping...
