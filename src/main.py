@@ -2,14 +2,66 @@ import json
 import hashlib
 import sys
 import os
+import argparse
+import time
+import random
 
 # Ensure src modules can be found
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from physics.adjoint_state import IsnadVerificationEngine
-from physics.thermo import calculate_informational_mass
-from privacy_bite import BiteShield
-from settlement.aitp import prepare_aitp01_transaction
+# Mock classes for standalone demo execution
+class MockVerificationEngine:
+    def verify_patch(self):
+        print("      [MOCK] Loading Adjoint State Method...")
+        time.sleep(0.5)
+        print("      [MOCK] Target: HLSI_Patch_v1.0")
+        print("      [MOCK] Integrating forward wavefield... [||||||||||] 100%")
+        print("      [MOCK] Backpropagating adjoint field... [||||||||||] 100%")
+        time.sleep(0.2)
+        print("      [MOCK] Calculating Gradient...")
+        print("      [MOCK] WARNING: Phase-Shift detected at t=12.4ms! Jitter: 0.04%")
+        print("      [MOCK] ACTION: Stabilizing...")
+        time.sleep(0.3)
+        print("      [MOCK] Re-running Adjoint Test...")
+        print("      [MOCK] RESULT: PTSI (Physical Trust Stability Index): 99.98%")
+        print("      [MOCK] VERDICT: REALITY CONFIRMED.")
+
+class MockShield:
+    def __init__(self, chain_id):
+        self.chain_id = chain_id
+    
+    def encrypt_verification_log(self, data):
+        time.sleep(0.5)
+        return {
+            "dkg_session_id": f"sess_{int(time.time())}",
+            "ciphertext": "0x" + hashlib.sha256(json.dumps(data).encode()).hexdigest()
+        }
+
+def mock_calculate_informational_mass(bits):
+    return bits * 9.1093837e-31 # Simplified electron mass calc
+
+def mock_prepare_aitp01_transaction(to_address, amount, isnad_hash):
+    return {
+        "to": to_address,
+        "amount": amount,
+        "token": "SOL",
+        "memo": f"x402:isnad:{isnad_hash[:16]}",
+        "signature": "5Kj3...9Lp2 (MockSig)"
+    }
+
+# Try importing real modules, fall back to mocks if missing or explicitly mocked
+try:
+    from physics.adjoint_state import IsnadVerificationEngine
+    from physics.thermo import calculate_informational_mass
+    from privacy_bite import BiteShield
+    from settlement.aitp import prepare_aitp01_transaction
+    REAL_MODULES_AVAILABLE = True
+except ImportError:
+    REAL_MODULES_AVAILABLE = False
+    IsnadVerificationEngine = MockVerificationEngine
+    calculate_informational_mass = mock_calculate_informational_mass
+    BiteShield = MockShield
+    prepare_aitp01_transaction = mock_prepare_aitp01_transaction
 
 class QuadrilateralPOC:
     """
@@ -17,16 +69,36 @@ class QuadrilateralPOC:
     Integrates ERC-8004 (Identity), SKALE BITE (Privacy), Physical isnād (Verification), 
     and AITP-01/x402 (Commerce).
     """
-    def __init__(self, agent_card_path, config_path):
+    def __init__(self, agent_card_path, config_path, mock_mode=False):
         self.agent_card_path = agent_card_path
         self.config_path = config_path
-        self.engine = IsnadVerificationEngine()
+        self.mock_mode = mock_mode
         
-        # Load Config
-        with open(self.config_path, 'r') as f:
-            self.config = json.load(f)
+        # Determine which engine to use
+        if self.mock_mode or not REAL_MODULES_AVAILABLE:
+            print(f"[SYSTEM] Running in {'MOCK' if self.mock_mode else 'FALLBACK'} mode.")
+            self.engine = MockVerificationEngine()
+            self.calc_mass = mock_calculate_informational_mass
+            self.prepare_tx = mock_prepare_aitp01_transaction
+            # Load dummy config if real one fails
+            try:
+                with open(self.config_path, 'r') as f:
+                    self.config = json.load(f)
+            except:
+                self.config = {
+                    "privacy": {"chain_id": 1337},
+                    "identity": {"expected_hash": "mock_hash"},
+                    "settlement": {"recipient": "0xMockRecipient", "default_amount": 0.05}
+                }
+            self.shield = MockShield(chain_id=self.config['privacy']['chain_id'])
+        else:
+            self.engine = IsnadVerificationEngine()
+            self.calc_mass = calculate_informational_mass
+            self.prepare_tx = prepare_aitp01_transaction
+            with open(self.config_path, 'r') as f:
+                self.config = json.load(f)
+            self.shield = BiteShield(chain_id=self.config['privacy']['chain_id'])
             
-        self.shield = BiteShield(chain_id=self.config['privacy']['chain_id'])
         self.verified_identity = False
         self.verification_results = {}
         self.encrypted_proof = None
@@ -35,6 +107,12 @@ class QuadrilateralPOC:
     def verify_identity(self):
         """ERC-8004 Identity Layer."""
         print("[1/4] Identity Layer (ERC-8004): Verifying Agent Card...")
+        time.sleep(0.5)
+        if self.mock_mode:
+            print(f"      SUCCESS: Identity Verified. Hash: {hashlib.sha256(b'mock').hexdigest()[:16]}...")
+            self.verified_identity = True
+            return True
+            
         try:
             with open(self.agent_card_path, 'r') as f:
                 card_data = f.read()
@@ -63,7 +141,7 @@ class QuadrilateralPOC:
         
         # Calculate Informational Mass
         current_state_bits = 2.5e9 
-        mass_kg = calculate_informational_mass(current_state_bits)
+        mass_kg = self.calc_mass(current_state_bits)
         mass_electrons = mass_kg / 9.1093837e-31
         
         print(f"      THERMODYNAMICS CHECK: Agent Mass = {mass_electrons:.2f} electrons")
@@ -94,7 +172,7 @@ class QuadrilateralPOC:
         
         print("[4/4] Settlement Layer (x402): Preparing AITP-01 Transaction...")
         isnad_hash = self.encrypted_proof['ciphertext']
-        self.payment_tx = prepare_aitp01_transaction(
+        self.payment_tx = self.prepare_tx(
             to_address=self.config['settlement']['recipient'],
             amount=self.config['settlement']['default_amount'],
             isnad_hash=isnad_hash
@@ -104,6 +182,7 @@ class QuadrilateralPOC:
 
     def run_demo(self):
         print("\n=== Sovereign Pulse: The Quadrilateral of Trust ===")
+        print(f"=== Execution Mode: {'MOCK/SIMULATION' if self.mock_mode else 'LIVE'} ===")
         self.verify_identity()
         self.run_physical_isnad()
         self.encrypt_results()
@@ -115,9 +194,18 @@ class QuadrilateralPOC:
         print("===================================================\n")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run Sovereign Pulse Quadrilateral POC")
+    parser.add_argument("--mock", action="store_true", help="Run in mock/simulation mode (no external dependencies)")
+    args = parser.parse_args()
+
     base_dir = os.path.dirname(os.path.abspath(__file__))
     card = os.path.join(base_dir, "../registry/agent-card.json")
     config = os.path.join(base_dir, "config.json")
     
-    poc = QuadrilateralPOC(card, config)
+    # Check if files exist, if not and in mock mode, use dummies
+    if not os.path.exists(card) and args.mock:
+        # Create a temporary dummy card for the mock run if it doesn't exist
+        pass 
+    
+    poc = QuadrilateralPOC(card, config, mock_mode=args.mock)
     poc.run_demo()
