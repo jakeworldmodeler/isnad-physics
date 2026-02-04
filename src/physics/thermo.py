@@ -36,6 +36,6 @@ if __name__ == "__main__":
     print(f"Informational Mass (electrons): {m_electrons:.2f}")
     
     # Test for Sovereign Pulse isnād
-    chain = ["NRIIT_QNX_Root", "Telugu_VAANI_Shield", "Sovereign_Pulse_v1.0", "Julie_Audit_Pending"]
+    chain = ["ERC-8004_Identity", "Solana_Unitary_Root", "Sovereign_Pulse_v1.0", "Julie_Audit_Verified"]
     depth = calculate_thermodynamic_depth(chain, 1.1414) # 1.1414 = 14.14% improvement factor
     print(f"Thermodynamic Depth (isnād): {depth}")

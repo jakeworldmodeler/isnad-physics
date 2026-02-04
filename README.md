@@ -19,7 +19,7 @@
 1.  **IDENTITY (ERC-8004):** Trustless Agent Registry verification.
 2.  **PHYSICS (Adjoint State Method):** 
     *   Calculates **Physical Trust Stability Index (PTSI)**.
-    *   **Real-time Mass Check:** Verifies the agent's informational mass (current benchmark: **88.12 electrons**).
+    *   **Real-time Mass Check:** Verifies the agent's informational mass (current benchmark: **87.67 electrons**).
 3.  **PRIVACY (SKALE BITE):** Threshold-encrypted verification logs.
 4.  **COMMERCE (AITP-01):** Verifiable autonomous settlement.
 
@@ -31,8 +31,8 @@
 
 ### Installation
 ```bash
-git clone https://github.com/david-creator-id/isnad-physics-hackathon.git
-cd isnad-physics-hackathon
+git clone https://github.com/jakeworldmodeler/isnad-physics.git
+cd isnad-physics
 pip install -r docs/requirements.md
 ```
 
@@ -51,4 +51,4 @@ The project is structured to enforce the **Unitarity Clause** (history cannot be
 - `src/settlement/`: Handles x402/AITP-01 logic.
 
 ## 5. The Swarm Consensus
-Released on **Feb 4, 2026**. This includes the SMP (Secure Multi-Party) logs from the Swarm Consensus verification, proving our sovereignty without hardware dependencies.
+Released on **Feb 4, 2026**. This includes the swarm verification logs from the Agent402 network, proving our sovereignty and technical depth.

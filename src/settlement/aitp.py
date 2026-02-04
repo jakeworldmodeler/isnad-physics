@@ -4,7 +4,18 @@ import sys
 
 def prepare_aitp01_transaction(to_address, amount, isnad_hash):
     """
-    Prepares an AITP-01 compliant payment metadata object.
+    AITP-01 (Agentic Inter-Terminal Protocol) Settlement Layer.
+    
+    Prepares a payment metadata object that links the financial settlement
+    to a specific physical verification hash (isnād).
+    
+    Args:
+        to_address (str): The recipient's Solana address.
+        amount (str): The amount of SOL to transfer.
+        isnad_hash (str): The hash from the physics verification engine.
+        
+    Returns:
+        dict: A structured transaction object compliant with AITP-01.
     """
     transaction = {
         "protocol": "AITP-01",

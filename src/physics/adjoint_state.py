@@ -3,7 +3,7 @@ import math
 class IsnadVerificationEngine:
     """
     POC: Using the Adjoint State Method to quantify 'Physical Trust'.
-    Sensitivity Analysis of the VAANI Shield Pipeline.
+    Sensitivity Analysis of the Sovereign Pulse Logic Chain.
     (Standard Library Version)
     """
     def __init__(self):
@@ -49,7 +49,7 @@ class IsnadVerificationEngine:
         print(f"Unpatched Stability: {score_unpatched:.4f} (Sensitivity: {sens_unpatched:.4f})")
         print(f"Patched Stability:   {score_patched:.4f} (Sensitivity: {sens_patched:.4f})")
         print(f"Verification Result: {improvement:.2f}% improvement in Physical Trust Stability.")
-        print(" isnād Verdict: STABLE for QUADNEXT-2026.")
+        print(" isnād Verdict: STABLE for SF Hackathon 2026.")
 
 if __name__ == "__main__":
     engine = IsnadVerificationEngine()

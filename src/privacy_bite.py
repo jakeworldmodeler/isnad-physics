@@ -26,12 +26,12 @@ class BiteShield:
         
         # Simulation of BLS Encryption
         # In reality: ciphertext = BLS.encrypt(payload, committee_public_key)
-        ciphertext = hashlib.sha3_56(payload).hexdigest() # Mock for demo
+        ciphertext = hashlib.sha3_256(payload).hexdigest() # Mock for demo
         
         return {
             "algorithm": "SKALE_BITE_BLS_v1",
             "ciphertext": ciphertext,
-            "dkg_session_id": "session_2026_02_03_agp",
+            "dkg_session_id": "session_sf_hack_2026_01",
             "public_proof": "visible" 
         }
 
