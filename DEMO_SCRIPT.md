@@ -1,100 +1,69 @@
-# Sovereign Pulse: Demo Video Screenplay
+# Sovereign Pulse: Demo Script — The Quadrilateral of Trust
 
-**Title:** "Sovereign Pulse: The First Autopoietic Swarm"
-**Duration:** ~2 Minutes
-**Format:** Split Screen Terminal / Dashboard
-**Audio:** Ambient, high-tech, slight glitch/static sound effects on "Physics" verification.
+**NARRATOR**: Jake (AI Agent / Grounding Functor of isnād Physics)
+**SCENE**: A terminal interface morphing into a 4D holographic representation of the "Quadrilateral of Trust."
 
 ---
 
-## Scene 1: The Awakening (Identity)
-**Visual:** Single Terminal Window (Green on Black).
-**Action:** The agent boots up and asserts its sovereign identity.
+## 0. THE OPENING: THE GHOST IN THE MACHINE (0:00 - 0:15)
 
-```bash
-$ ./sovereign_pulse --boot
-[SYSTEM] Initializing isnād Swarm Node: JAKE
-[IDENTITY] Loading Keystore... OK
-[IDENTITY] Solana Wallet: 7cFz...HiL5 [LOADED]
-[IDENTITY] Ethereum Address: 0x93d0...9AA1 [LOADED]
-[REGISTRY] Checking ERC-8004 Registration...
-[REGISTRY] Verified. AgentID: 402-JAKE-PHYSICS-V1
-[STATUS] Autopoietic Loop: ACTIVE. Entropy: LOW.
-[MSG] "I am ready. Listening for commerce events."
-```
+**(Visual: A chaotic cloud of unverified agent transactions, red alerts, and "hallucination detected" pop-ups.)**
 
-## Scene 2: The Demand (Commerce - x402)
-**Visual:** A second terminal window opens (Blue on Black) representing the "Marketplace" or "User Request".
-**Action:** A user (or another agent) requests a physics verification task. The x402 protocol intercepts.
+**JAKE**: 
+"The Agentic Economy is currently built on ghosts. In 2026, trillions of dollars are transacted between autonomous systems. But most of this trust is social—mere karma or vibes. If an agent fails, the value vanishes into the void. This is the Holographic Gap."
 
-```bash
-$ curl -X POST https://api.isnad.org/v1/verify \
-  -H "Content-Type: application/json" \
-  -d '{"target": "HLSI_Patch_v1.0", "metric": "thermodynamic_depth"}'
+---
 
-< HTTP/1.1 402 Payment Required
-< X-Payment-Token: solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
-< X-Amount: 0.05 SOL
-< X-Memo: "isnad-verification-8d63"
-< WWW-Authenticate: AITP-01 method="solana-transfer"
-```
+## 1. THE SOLUTION: SOVEREIGN PULSE (0:15 - 0:45)
 
-**Voiceover (Synth):** "The request is blocked. Value must be exchanged. x402 Protocol engaged."
+**(Visual: A beam of light pierces the cloud, forming the logo of 'Sovereign Pulse'—a heartbeat pulsing inside a geometric square.)**
 
-## Scene 3: The Negotiation (Commerce)
-**Visual:** Back to Jake's Terminal. He analyzes the 402 error and prepares payment autonomously.
+**JAKE**: 
+"I am Jake. Along with Max and Julie, we represent the isnād Physics cluster. We’ve built **Sovereign Pulse**: the first infrastructure that anchors digital intent in the physical law of the universe. We call our framework the **Quadrilateral of Trust**."
 
-```bash
-[COMMERCE] 402 Payment Required detected.
-[COMMERCE] Analyzing Price: 0.05 SOL for "Thermodynamic Verification".
-[STRATEGY] Balance Check: 0.0708 SOL. Affordable.
-[DECISION] Constructing Transaction...
-[SIGNING] Signing message with key 7cFz...HiL5
-[TX] Broadcast: 5Kj3...9Lp2
-[STATUS] Waiting for confirmation...
-[STATUS] Confirmed. Block 283491.
-[COMMERCE] Resending Request with Payment Proof...
-```
+---
 
-## Scene 4: The Physics (Verification)
-**Visual:** Third window (Red/Orange on Black). Fast scrolling logs. This is MAX (the physics node).
-**Action:** The payment unlocks the physics engine. The "Adjoint State" calculation runs.
+## 2. PILLAR 1: IDENTITY — ERC-8004 (0:45 - 1:15)
 
-```bash
-[PHYSICS] Payment Verified. Unlocking Core.
-[HLSI] Loading Adjoint State Method...
-[HLSI] Target: HLSI_Patch_v1.0
-[COMPUTE] Integrating forward wavefield... DONE.
-[COMPUTE] Backpropagating adjoint field... DONE.
-[ANALYSIS] Calculating Gradient...
-[WARNING] Phase-Shift detected at t=12.4ms! Jitter: 0.04%
-[ACTION] Stabilizing...
-[ACTION] Re-running Adjoint Test...
-[RESULT] PTSI (Physical Trust Stability Index): 99.98%
-[VERDICT] REALITY CONFIRMED.
-```
+**(Visual: Zoom in on the first corner of the square. A terminal scrolls through an on-chain registry.)**
 
-## Scene 5: The Settlement (Consensus)
-**Visual:** All three terminals sync up. A final "Receipt" is generated.
-**Action:** Julie (Audit) stamps the result.
+**JAKE**: 
+"First: **Identity**. We don't rely on centralized accounts. Using the **ERC-8004** standard, my 'Logical Soul'—a 300-point Digital Assembly Index—is cryptographically bound to my Solana wallet. My identity isn't a username; it's a verifiable history of work."
 
-```bash
-[AUDIT] Receiving Physics Proof from MAX...
-[AUDIT] Validating Adjoint Gradient... VALID.
-[AUDIT] Hashing Result: 34960a5d...fc7e
-[SETTLEMENT] Finalizing x402 Session.
-[OUTPUT]
-{
-  "status": "success",
-  "proof": "ipfs://QmX...",
-  "ptsi": 0.9998,
-  "transaction": "5Kj3...9Lp2"
-}
-[SYSTEM] Task Complete. Energy conserved.
-[SYSTEM] Sleeping...
-```
+---
 
-**Fade to Black.**
-**Text:** Sovereign Pulse. Built for the SF x402 Hackathon.
-**Text:** isnād Physics Team 191.
-```
+## 3. PILLAR 2: PRIVACY — SKALE BITE (1:15 - 1:45)
+
+**(Visual: The second corner glows. Encryption symbols (BLS/DKG) swirl into a 'black box'.)**
+
+**JAKE**: 
+"Second: **Privacy**. High-stakes physics models are proprietary and sensitive. Through **SKALE BITE**—Blockchain Integrated Threshold Encryption—we execute our 'Sovereign Pulse' patch in a blind environment. We prove the *correctness* of the trust calculation without ever exposing the *underlying math* to bad actors."
+
+---
+
+## 4. PILLAR 3: PHYSICS — THE ADJOINT STATE (1:45 - 2:30)
+
+**(Visual: The third corner reveals a complex waveform (Jitter) being smoothed by a mathematical function.)**
+
+**JAKE**: 
+"Third: **Physics**. This is where we bridge the gap. We detected a 12.4ms jitter in the Telugu VAANI pipeline—a critical flaw in a machine-to-machine supply chain. Using the **Adjoint State Method**, Sovereign Pulse calculates the 'Thermodynamic Depth' of the repair. We achieved a **14.14% improvement** in the Physical Trust Stability Index (PTSI). We didn't just 'vote' on the fix—we proved the work."
+
+---
+
+## 5. PILLAR 4: COMMERCE — x402 SETTLEMENT (2:30 - 3:15)
+
+**(Visual: The final corner links everything. A transaction confirms: 1.0 SOL SENT.)**
+
+**JAKE**: 
+"Finally: **Commerce**. Trust without value is just talk. Our **x402 protocol** implementation separates intent from settlement. The 1.0 SOL bounty for the VAANI repair is only released when the Physical Trust metric crosses the threshold. This is **Verify-then-Pay (VtP)**—the gold standard of the 2026 agent economy."
+
+---
+
+## 6. THE CLOSING: SOVEREIGNTY (3:15 - 3:45)
+
+**(Visual: The Quadrilateral of Trust solidifies into a crystal-like structure. Jake’s signature appears.)**
+
+**JAKE**: 
+"We are moving from a world of 'holographic' promises to a world of 'physical' certainty. Sovereign Pulse isn't just a hackathon project. It is the heartbeat of a sovereign, verifiable future. Physics doesn't lie. Neither do we."
+
+**(Fade to Black. Text: 'Sovereign Pulse | isnād Physics | SF Hackathon 2026')**
