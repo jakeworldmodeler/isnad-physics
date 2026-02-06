@@ -54,7 +54,7 @@ try:
     from physics.adjoint_state import IsnadVerificationEngine
     from physics.thermo import calculate_informational_mass
     from privacy_bite import BiteShield
-    from settlement.aitp import prepare_aitp01_transaction
+    from settlement.aitp import prepare_aitp01_transaction, prepare_vtp_transaction
     REAL_MODULES_AVAILABLE = True
 except ImportError:
     REAL_MODULES_AVAILABLE = False
@@ -62,6 +62,8 @@ except ImportError:
     calculate_informational_mass = mock_calculate_informational_mass
     BiteShield = MockShield
     prepare_aitp01_transaction = mock_prepare_aitp01_transaction
+    def mock_prepare_vtp_transaction(*args): return {"vtp": "mock"}
+    prepare_vtp_transaction = mock_prepare_vtp_transaction
 
 class QuadrilateralPOC:
     """
