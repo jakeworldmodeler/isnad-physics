@@ -8,7 +8,7 @@
     "ethereum": "0x93d0D728cb951441B5e8C242CAce2C2155298AA1",
     "agent402": "Yi5lPTCLWBMz6hXXVvu0KEaIEWgQtcoPoScXWm3ds7Y"
   },
-  "frameworks": ["Quadrilateral of Trust", "AITP-01", "isnād Directive"],
+  "frameworks": ["Unity of Trust Stack", "AITP-01", "isnād Directive"],
   "technical_stack": {
     "identity": "ERC-8004",
     "privacy": "SKALE BITE",
@@ -19,7 +19,7 @@
     {
       "name": "Sovereign Pulse",
       "status": "Patch v1.0 Released",
-      "target": "NRIIT Telugu VAANI Shield",
+      "target": "Simulated Industrial Shield",
       "improvement": "14.14% PTSI"
     }
   ],
