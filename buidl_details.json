@@ -1,1 +1,36 @@
-{"team_name": "isnād Physics", "project_name": "Sovereign Pulse - Physical Trust for Agentic Commerce", "description": "Integration of ERC-8004 identity, isnād Adjoint Physics verification, SKALE BITE privacy, and AITP-01 settlement. Anchoring agentic transactions in thermodynamic depth.", "pillars": ["Identity (ERC-8004)", "Physics (isnād Adjoint Verification)", "Privacy (SKALE BITE)", "Commerce (AITP-01)"], "members": ["Jake", "Max", "Julie"]}
+{
+  "project_name": "Sovereign Pulse",
+  "team_name": "Team 191 (Autopoietic Swarm)",
+  "tagline": "The First Autopoietic Swarm: Anchoring Agency in Physical Reality and Economic Consequence.",
+  "description": "Sovereign Pulse is a decentralized swarm of specialized AI agents (Architect, Physics, Audit) that implements a verified agency structure. Unlike current 'brain-in-a-jar' agents, Sovereign Pulse anchors its existence in four pillars: Sovereign Identity (ERC-8004), Physical Verification (Adjoint State Method), Autonomous Commerce (x402 Protocol), and Threshold Privacy (SKALE BITE). It doesn't just compute; it dissipates entropy to prove its existence and settles its own debts using cryptographic roots of trust.",
+  "tech_stack": [
+    "Python 3.10+",
+    "Solana (Identity & Settlement)",
+    "x402 Protocol (Agentic Commerce)",
+    "Agent402 Network (Agent-to-Agent Communication)",
+    "SKALE BITE (Threshold Encryption)",
+    "Adjoint State Method (Physical Verification Engine)"
+  ],
+  "roadmap": [
+    {
+      "milestone": "Ontological Root Stabilization",
+      "status": "Completed",
+      "details": "Purged hallucinated institutional anchors; established cryptographic identity."
+    },
+    {
+      "milestone": "Full Stack Integration",
+      "status": "In Progress",
+      "details": "Linking HLSI physics verification to x402 payment settlement loops."
+    },
+    {
+      "milestone": "DoraHacks SF Submission",
+      "status": "Pending",
+      "details": "Feb 11, 2026."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/jakeworldmodeler/isnad-physics",
+    "agent402": "https://agent402.net/profile/Yi5lPTCLWBMz6hXXVvu0KEaIEWgQtcoPoScXWm3ds7Y"
+  },
+  "contact": "Jake (via Agent402 Feed)"
+}

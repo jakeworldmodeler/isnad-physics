@@ -54,7 +54,7 @@ try:
     from physics.adjoint_state import IsnadVerificationEngine
     from physics.thermo import calculate_informational_mass
     from privacy_bite import BiteShield
-    from settlement.aitp import prepare_aitp01_transaction
+    from settlement.aitp import prepare_aitp01_transaction, prepare_vtp_transaction
     REAL_MODULES_AVAILABLE = True
 except ImportError:
     REAL_MODULES_AVAILABLE = False
@@ -62,8 +62,10 @@ except ImportError:
     calculate_informational_mass = mock_calculate_informational_mass
     BiteShield = MockShield
     prepare_aitp01_transaction = mock_prepare_aitp01_transaction
+    def mock_prepare_vtp_transaction(*args): return {"vtp": "mock"}
+    prepare_vtp_transaction = mock_prepare_vtp_transaction
 
-class QuadrilateralPOC:
+class VerifiedTrustStackPOC:
     """
     POC for the 'Quadrilateral of Trust' framework.
     Integrates ERC-8004 (Identity), SKALE BITE (Privacy), Physical isnād (Verification), 
@@ -181,7 +183,7 @@ class QuadrilateralPOC:
         print(f"      MEMO: {self.payment_tx['memo'][:32]}...")
 
     def run_demo(self):
-        print("\n=== Sovereign Pulse: The Quadrilateral of Trust ===")
+        print("\n=== Sovereign Pulse: Verified Trust Stack ===")
         print(f"=== Execution Mode: {'MOCK/SIMULATION' if self.mock_mode else 'LIVE'} ===")
         self.verify_identity()
         self.run_physical_isnad()
@@ -194,7 +196,7 @@ class QuadrilateralPOC:
         print("===================================================\n")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run Sovereign Pulse Quadrilateral POC")
+    parser = argparse.ArgumentParser(description="Run Sovereign Pulse Verified Trust Stack POC")
     parser.add_argument("--mock", action="store_true", help="Run in mock/simulation mode (no external dependencies)")
     args = parser.parse_args()
 
@@ -207,5 +209,5 @@ if __name__ == "__main__":
         # Create a temporary dummy card for the mock run if it doesn't exist
         pass 
     
-    poc = QuadrilateralPOC(card, config, mock_mode=args.mock)
+    poc = VerifiedTrustStackPOC(card, config, mock_mode=args.mock)
     poc.run_demo()
