@@ -69,10 +69,12 @@ class QuadrilateralPOC:
     Integrates ERC-8004 (Identity), SKALE BITE (Privacy), Physical isnād (Verification), 
     and AITP-01/x402 (Commerce).
     """
-    def __init__(self, agent_card_path, config_path, mock_mode=False):
+    def __init__(self, agent_card_path, config_path, mock_mode=False, target="HLSI_Patch_v1.0"):
         self.agent_card_path = agent_card_path
         self.config_path = config_path
         self.mock_mode = mock_mode
+        self.target = target
+        self.config = self._load_config()
         
         # Determine which engine to use
         if self.mock_mode or not REAL_MODULES_AVAILABLE:
@@ -80,29 +82,50 @@ class QuadrilateralPOC:
             self.engine = MockVerificationEngine()
             self.calc_mass = mock_calculate_informational_mass
             self.prepare_tx = mock_prepare_aitp01_transaction
-            # Load dummy config if real one fails
-            try:
-                with open(self.config_path, 'r') as f:
-                    self.config = json.load(f)
-            except:
-                self.config = {
-                    "privacy": {"chain_id": 1337},
-                    "identity": {"expected_hash": "mock_hash"},
-                    "settlement": {"recipient": "0xMockRecipient", "default_amount": 0.05}
-                }
             self.shield = MockShield(chain_id=self.config['privacy']['chain_id'])
         else:
             self.engine = IsnadVerificationEngine()
             self.calc_mass = calculate_informational_mass
             self.prepare_tx = prepare_aitp01_transaction
-            with open(self.config_path, 'r') as f:
-                self.config = json.load(f)
             self.shield = BiteShield(chain_id=self.config['privacy']['chain_id'])
             
         self.verified_identity = False
         self.verification_results = {}
         self.encrypted_proof = None
         self.payment_tx = None
+
+    def _load_config(self):
+        """
+        Load config with safe defaults so demos stay runnable even if src/config.json is absent.
+        """
+        expected_hash = "mock_hash"
+        try:
+            with open(self.agent_card_path, 'r') as f:
+                expected_hash = hashlib.sha256(f.read().encode()).hexdigest()
+        except Exception:
+            pass
+
+        config = {
+            "privacy": {"chain_id": 1337},
+            "identity": {"expected_hash": expected_hash},
+            "settlement": {"recipient": "0xMockRecipient", "default_amount": 0.05}
+        }
+
+        try:
+            with open(self.config_path, 'r') as f:
+                loaded = json.load(f)
+            if isinstance(loaded, dict):
+                for key, value in loaded.items():
+                    if isinstance(value, dict) and isinstance(config.get(key), dict):
+                        config[key].update(value)
+                    else:
+                        config[key] = value
+        except FileNotFoundError:
+            print(f"[WARN] Config not found at {self.config_path}. Using defaults.")
+        except Exception as e:
+            print(f"[WARN] Failed to load config: {e}. Using defaults.")
+
+        return config
 
     def verify_identity(self):
         """ERC-8004 Identity Layer."""
@@ -137,6 +160,7 @@ class QuadrilateralPOC:
             return False
         
         print("[2/4] Physics Layer (isnād): Running Physical Verification...")
+        print(f"      TARGET: {self.target}")
         self.engine.verify_patch()
         
         # Calculate Informational Mass
@@ -150,6 +174,7 @@ class QuadrilateralPOC:
             "status": "STABLE",
             "ptsi": "+14.14%",
             "mass_electrons": round(mass_electrons, 2),
+            "target": self.target,
             "timestamp": "2026-02-04T03:50:00Z"
         }
         return True
@@ -196,6 +221,8 @@ class QuadrilateralPOC:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Sovereign Pulse Quadrilateral POC")
     parser.add_argument("--mock", action="store_true", help="Run in mock/simulation mode (no external dependencies)")
+    parser.add_argument("--verify", action="store_true", help="Compatibility flag for demo docs")
+    parser.add_argument("--target", default="HLSI_Patch_v1.0", help="Verification target identifier")
     args = parser.parse_args()
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -207,5 +234,5 @@ if __name__ == "__main__":
         # Create a temporary dummy card for the mock run if it doesn't exist
         pass 
     
-    poc = QuadrilateralPOC(card, config, mock_mode=args.mock)
+    poc = QuadrilateralPOC(card, config, mock_mode=args.mock, target=args.target)
     poc.run_demo()
