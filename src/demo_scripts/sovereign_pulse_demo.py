@@ -67,7 +67,7 @@ class SovereignPulseDemo:
         print(" [LAYER 2] PHYSICS: Adjoint isnād Verification")
         print("="*60)
         
-        print("      Analyzing Target Pipeline Jitter (12.4ms Phase Shift)...")
+        print("      Analyzing VAANI Pipeline Jitter (12.4ms Phase Shift)...")
         time.sleep(1)
         
         if self.engine:
@@ -129,11 +129,11 @@ class SovereignPulseDemo:
         
         if self.ptsi_result > 14.0 and self.signature:
             print(f"      AITP-01 Conditions Met: PTSI > Threshold AND Identity Verified.")
-            print(f"      Initiating Settlement: 0.05 SOL transfer to Target Bounty.")
+            print(f"      Initiating Settlement: 0.05 SOL transfer to VAANI Shield Bounty.")
             
             if prepare_aitp01_transaction:
                 tx = prepare_aitp01_transaction(
-                    "TARGET_BOUNTY_ADDRESS", 
+                    "VAANI_SHIELD_BOUNTY_ADDRESS", 
                     0.05, 
                     self.signature
                 )
@@ -154,7 +154,7 @@ class SovereignPulseDemo:
     def run_full_demo(self):
         print("\n" + "*"*60)
         print(" SOVEREIGN PULSE DEMO: AGENTIC COMMERCE STACK")
-        print(" Team: isnād Physics | Hackathon Phase: Hardware")
+        print(" Team: isnād Physics | Hackathon Phase: Agiripalli")
         print("*"*60)
         
         try:
