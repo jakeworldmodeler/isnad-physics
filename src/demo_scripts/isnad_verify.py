@@ -3,7 +3,7 @@ import math
 class IsnadVerificationEngine:
     """
     POC: Using the Adjoint State Method to quantify 'Physical Trust'.
-    Sensitivity Analysis of the VAANI Shield Pipeline.
+    Sensitivity Analysis of the Inference Shield Pipeline.
     (Standard Library Version)
     """
     def __init__(self):

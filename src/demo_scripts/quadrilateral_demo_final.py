@@ -45,7 +45,7 @@ class QuadrilateralDemo:
         print("\n[PILLAR 2] Privacy (SKALE BITE - Threshold Encryption)")
         print(f"      Status: Executing Sovereign Pulse patch in blind environment...")
         # Simulating BITE encryption of the logic
-        payload = {"action": "STABILIZE_VAANI_PIPELINE", "agent": "Jake", "ts": time.time()}
+        payload = {"action": "STABILIZE_TARGET_PIPELINE", "agent": "Jake", "ts": time.time()}
         bite_blob = hashlib.sha256(json.dumps(payload).encode()).hexdigest()
         self.results['privacy_blob'] = bite_blob
         print(f"      BITE Protocol: BLS/DKG Threshold Consensus Active.")
@@ -55,7 +55,7 @@ class QuadrilateralDemo:
 
     def run_pillar_3_physics(self):
         print("\n[PILLAR 3] Physics (Adjoint State Method)")
-        print(f"      Status: Analyzing 12.4ms Jitter in Telugu VAANI Pipeline...")
+        print(f"      Status: Analyzing 12.4ms Jitter in Mission-Critical Pipeline...")
         unpatched = self.engine.forward_pass(1.0) # Jitter active
         patched = self.engine.forward_pass(0.001) # Jitter stabilized
         improvement = ((patched - unpatched) / unpatched) * 100
