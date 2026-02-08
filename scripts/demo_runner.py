@@ -16,7 +16,8 @@ def run_isnad_demo():
     print("-" * 50)
 
     card_path = os.path.join(os.path.dirname(__file__), "../registry/agent-card.json")
-    poc = QuadrilateralPOC(card_path)
+    config_path = os.path.join(os.path.dirname(__file__), "../src/config.json")
+    poc = QuadrilateralPOC(card_path, config_path, mock_mode=True)
     
     steps = [
         ("Identity Verification", poc.verify_identity),

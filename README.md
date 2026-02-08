@@ -61,8 +61,8 @@ pip install -r docs/requirements.md
 To simulate the "Physics" loop locally:
 
 ```bash
-# Verify the latest patch
-python3 src/main.py --verify --target "HLSI_Patch_v1.0"
+# Run the full local simulation
+python3 src/main.py --mock
 ```
 
 ---
